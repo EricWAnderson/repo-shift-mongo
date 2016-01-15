@@ -11,6 +11,15 @@ module.exports = function(grunt) {
                 dest: 'server/public/assets/scripts/client.min.js'
             }
         },
+        watch: {
+            scripts: {
+                files: ['client/client.js'],
+                tasks: ['uglify'],
+                options: {
+                    spawn: false
+                }
+            }
+        },
         copy: {
             main: {
                 expand: true,
@@ -28,6 +37,7 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     // Default task(s).
     grunt.registerTask('default', ['copy', 'uglify']);
