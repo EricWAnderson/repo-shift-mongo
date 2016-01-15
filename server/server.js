@@ -4,7 +4,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
-var mongoURI = "mongodb://localhost:27017/repo-shift-mongo";
+var mongoURI = "mongodb://localhost:27017/repo-shift-mongo-wednesday";
 var mongoDB = mongoose.connect(mongoURI).connection;
 
 app.use(express.static('server/public'));

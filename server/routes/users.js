@@ -5,6 +5,7 @@ var express = require('express');
 var path = require('path');
 var User = require('../models/user');
 var createUser = require('../modules/createUser');
+var deleteUser = require('../modules/deleteUser');
 
 var router = express.Router();
 
@@ -25,6 +26,19 @@ router.get('/', function(request, response){
 
     response.send(userArray);
 
+});
+
+router.delete('/delete/:id', function(request, response){
+    //delete users
+    deleteUser(request.params.id);
+
+    //find remaining users, send back to client
+    User.find({}).exec(function(err, users){
+        if(err){
+            console.log('error getting all users', err);
+        }
+        response.send(users);
+    })
 });
 
 module.exports = router;
